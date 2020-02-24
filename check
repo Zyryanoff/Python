@@ -1,0 +1,26 @@
+def summEnter():
+    x = input('Сколько у вас сейчас денег? ')
+    return x
+
+summRaw = summEnter()
+
+def rightNumb(y):
+        try:
+            float(y)
+            return True
+        except ValueError:
+            return False
+
+check = rightNumb(summRaw)
+
+while (check != True):
+    print('Вы ввели не число, повторите попытку')
+    print('')
+    summRaw = summEnter()
+    check = rightNumb(summRaw)
+else:
+    print ('Спасибо')
+
+summ = float(summRaw)
+
+print (summ)
