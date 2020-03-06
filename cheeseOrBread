@@ -1,0 +1,109 @@
+def summEnter():
+    x = input('How much cash do you have? Your balance must be numeric: ')
+    return x
+
+summRaw = summEnter()
+
+def rightNumb(y):
+        try:
+            float(y)
+            return True
+        except ValueError:
+            return False
+
+check = rightNumb(summRaw)
+
+while (check != True):
+    print('You puted an incorrect simbols. Try again')
+    print('')
+    summRaw = summEnter()
+    check = rightNumb(summRaw)
+else:
+    print ('Thanks')
+    print ('')
+
+money = float(summRaw)
+
+# boughtProducts = []
+
+# def whileYesNo ()
+
+def yesOrNo(): #Function is defines answer of yes-no question
+    answ = input('Please, input "yes" or "no": ').lower()
+    while (answ != 'yes' or answ != 'no'):
+        answ = input('Please, input "yes" or "no": ').lower()
+
+    return answ
+
+def oneProduct():
+    print ('What product you want to choose?')
+    answ = input('Puts "cheese", "bread" or "cancel"').lower()
+    while (answ != 'cheese' or answ != 'bread' or answ != 'cancel'):
+        answ = input('Please, input "csheese", "bread" or "cancel": ').lower()
+    return answ
+
+
+    
+    
+
+def chooseProduct (z):
+    if z >= 120:
+        print ("You have enough money to buy both products")
+        print ("Do you want to buy both products?")
+        answer = yesOrNo()
+        
+        if (answer == 'yes'):
+            choosenProduct = 'both'
+                    
+        else:
+            print ('Do you want to buy just one product? (yes or no)')
+            answer2 = yesOrNo()
+            if (answer2 == 'yes'):                    
+                choosenProduct = oneProduct()
+                
+            else:
+                choosenProduct = 'nothing'
+                
+        return choosenProduct
+
+    elif (z < 120 and z >= 100):
+        print ('You can buy only one product (cheese or bread)')
+        print ('Do you want to choose one?')
+        answer = yesOrNo()
+        if (answer == 'yes'):
+            choosenProduct = oneProduct()
+        else:
+            choosenProduct = 'nothing'
+            
+        return choosenProduct
+
+    elif (z < 100 and z >= 20):
+        print ('You can buy only bread. Do you want to buy it?')
+        answer = yesOrNo()
+        if (answer == 'yes'):
+            choosenProduct = 'bread'
+        else:
+            choosenProduct = 'nothing'
+
+        return choosenProduct
+
+    else:
+        print ('You have no enough money to bough this products')
+        choosenProduct = 'nothing'
+        
+        return choosenProduct
+            
+choosenProduct = chooseProduct(money)
+
+if (choosenProduct == 'both'):
+    balance = (money - 120)
+    print('You bought cheese and bread. You balance is: ' + str(balance))     
+
+elif (choosenProduct == 'cheese'):
+    balance = (money - 100)
+    print ('You bought a cheese, your balance is' + str(balance))
+elif (choosenProduct == 'bread'):
+    balance = (money - 20)
+    print ('You bought a bread, your balance is' + str(balance))
+else:
+    print ('You have buy nothing, and kept your money saved. Your balance is ' + str(money))
